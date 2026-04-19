@@ -38,7 +38,11 @@ let list = notes.map(note => ({
 }));
 
 // Extract all unique series and tags from the filtered notes
-const series = Array.from(new Set(notes.map(note => note.data.series).filter((series): series is string => Boolean(series)))).sort();
+// Predefined series: Invest, Travel, Life (always shown even if no articles)
+const predefinedSeries = ["Invest", "Travel", "Life"];
+const existingSeries = Array.from(new Set(notes.map(note => note.data.series).filter((series): series is string => Boolean(series)))).sort();
+// Merge predefined series with existing series, remove duplicates, and sort
+const series = Array.from(new Set([...predefinedSeries, ...existingSeries])).sort();
 const tags = Array.from(new Set(notes.flatMap(note => note.data.tags).filter((tag): tag is string => Boolean(tag)))).sort();
 ---
 
