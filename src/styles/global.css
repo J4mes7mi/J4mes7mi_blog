@@ -1,3 +1,49 @@
+/* 使用本地字体文件 - 不依赖任何境外服务 */
+@import "tailwindcss";
+
+/* 定义本地字体 */
+@font-face {
+	font-family: 'Noto Serif';
+	src: url('/fonts/NotoSerif-VariableFont_wdth,wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noto Serif';
+	src: url('/fonts/NotoSerif-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Playwrite MX';
+	src: url('/fonts/PlaywriteMX-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noto Serif SC';
+	src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Iconify 图标字体支持 */
+.iconify {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.15em;
+	fill: currentColor;
+	overflow: hidden;
+}
+
 @import "tailwindcss";
 
 @plugin "@iconify/tailwind4" {
@@ -16,6 +62,14 @@
 
 :root,
 [data-theme="light"] {
+	/* 字体变量定义 */
+	--font-noto-serif: 'Noto Serif', Georgia, serif;
+	--font-noto-serif-sc: 'Noto Serif SC', 'Source Han Serif SC', serif;
+	--font-noto-serif-jp: 'Noto Serif JP', serif;
+	--font-playwrite-mx: 'Playwrite MX', cursive;
+	--font-maple-mono-nf-cn: 'Maple Mono NF CN', 'Maple Mono NF', 'Courier New', monospace;
+	--font-the-peak-font-plus: Georgia, serif;
+	
 	--primary-color: #2a2a28;
 	--secondary-color: #50504d;
 	--remark-color: #757575;
@@ -222,6 +276,17 @@
 	--font-serif: var(--font-noto-serif);
 	--font-mono: var(--font-maple-mono-nf-cn);
 	--font-cursive: var(--font-playwrite-mx), var(--font-the-peak-font-plus);
+
+	/* 字体粗细 */
+	--font-weight-thin: 100;
+	--font-weight-extralight: 200;
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+	--font-weight-extrabold: 800;
+	--font-weight-black: 900;
 
 	@keyframes shaky {
 		0% {

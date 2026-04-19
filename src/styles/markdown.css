@@ -39,24 +39,27 @@
 			}
 
 			&[target="_blank"]::after {
-				content: "\202F \202F";
+				content: "↗";
 				white-space: pre;
 				font-size: 0.8em;
 				vertical-align: 0.05em;
+				margin-left: 0.1em;
 			}
 
 			&:not([target="_blank"], [data-footnote-ref], [data-footnote-backref])::after {
-				content: "\202F \202F";
+				content: "🔗";
 				white-space: pre;
 				font-size: 0.85em;
 				vertical-align: 0.05em;
+				margin-left: 0.1em;
 			}
 
 			&[href^="mailto:"]::after {
-				content: "\202F󱃝 \202F";
+				content: "✉";
 				white-space: pre;
 				font-size: 0.9em;
 				vertical-align: -0.1em;
+				margin-left: 0.1em;
 			}
 		}
 
