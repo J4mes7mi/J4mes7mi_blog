@@ -3,33 +3,44 @@
 
 /* 定义本地字体 */
 @font-face {
-	font-family: 'Noto Serif';
-	src: url('/fonts/NotoSerif-VariableFont_wdth,wght.ttf') format('truetype');
+	font-family: "Noto Serif";
+	src: url("/fonts/NotoSerif-VariableFont_wdth,wght.ttf") format("truetype");
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Noto Serif';
-	src: url('/fonts/NotoSerif-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+	font-family: "Noto Serif";
+	src: url("/fonts/NotoSerif-Italic-VariableFont_wdth,wght.ttf") format("truetype");
 	font-weight: 100 900;
 	font-style: italic;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Playwrite MX';
-	src: url('/fonts/PlaywriteMX-VariableFont_wght.ttf') format('truetype');
+	font-family: "Playwrite MX";
+	src: url("/fonts/PlaywriteMX-VariableFont_wght.ttf") format("truetype");
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Noto Serif SC';
-	src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype');
+	font-family: "Noto Serif SC";
+	src: url("/fonts/NotoSerifSC-VariableFont_wght.ttf") format("truetype");
 	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Font Awesome 6 图标字体支持 */
+@font-face {
+	font-family: "Font Awesome 6 Free";
+	src:
+		url("/fonts/fa-solid-900.woff2") format("woff2"),
+		url("/fonts/fa-solid-900.ttf") format("truetype");
+	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
 }
@@ -43,8 +54,6 @@
 	fill: currentColor;
 	overflow: hidden;
 }
-
-@import "tailwindcss";
 
 @plugin "@iconify/tailwind4" {
 	prefixes: lucide, simple-icons, fa6-brands;
@@ -63,13 +72,13 @@
 :root,
 [data-theme="light"] {
 	/* 字体变量定义 */
-	--font-noto-serif: 'Noto Serif', Georgia, serif;
-	--font-noto-serif-sc: 'Noto Serif SC', 'Source Han Serif SC', serif;
-	--font-noto-serif-jp: 'Noto Serif JP', serif;
-	--font-playwrite-mx: 'Playwrite MX', cursive;
-	--font-maple-mono-nf-cn: 'Maple Mono NF CN', 'Maple Mono NF', 'Courier New', monospace;
+	--font-noto-serif: "Noto Serif", Georgia, serif;
+	--font-noto-serif-sc: "Noto Serif SC", "Source Han Serif SC", serif;
+	--font-noto-serif-jp: "Noto Serif JP", serif;
+	--font-playwrite-mx: "Playwrite MX", cursive;
+	--font-maple-mono-nf-cn: "Maple Mono NF CN", "Maple Mono NF", "Courier New", monospace;
 	--font-the-peak-font-plus: Georgia, serif;
-	
+
 	--primary-color: #2a2a28;
 	--secondary-color: #50504d;
 	--remark-color: #757575;
