@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Markdown 撰写教程 - 从入门到精通
 timestamp: 2026-04-20 16:30:00+00:00
 tags: [Markdown, Guide]
@@ -6,8 +7,6 @@ description: 全面介绍博客支持的 Markdown 语法，包括文字样式、
 toc: true
 top: 2
 ---
-
-# Markdown 撰写教程 - 从入门到精通
 
 欢迎来到博客创作指南！本教程将详细介绍本博客支持的所有 Markdown 语法，帮助你创作出美观、专业的内容。
 
