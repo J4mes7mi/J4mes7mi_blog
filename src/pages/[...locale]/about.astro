@@ -7,18 +7,19 @@ import i18nit from "$i18n";
 
 export async function getStaticPaths() {
 	// Create path for each locale, omitting default locale from URL
-	return config.i18n.locales.map(locale => ({ params: { locale: config.i18n.defaultLocale === locale ? undefined : locale } }));
+	return config.i18n.locales.map(locale => ({ params: { locale: locale } }));
 }
 
 const { locale = config.i18n.defaultLocale } = Astro.params;
 
 const t = i18nit(locale);
 
-const localePrefix = monolocale ? "" : `${locale}/`;
+// Information entries are always stored with locale prefix in the directory structure
+const informationPrefix = `${locale}/`;
 
-const introduction = await getEntry("information", `${localePrefix}introduction`);
-const linkroll = await getEntry("information", `${localePrefix}linkroll`);
-const chronicle = (await getEntry("information", `${localePrefix}chronicle`))?.data;
+const introduction = await getEntry("information", `${informationPrefix}introduction`);
+const linkroll = await getEntry("information", `${informationPrefix}linkroll`);
+const chronicle = (await getEntry("information", `${informationPrefix}chronicle`))?.data;
 
 const { Content: Introduction } = introduction ? await render(introduction) : ({} as any);
 const { Content: Linkroll } = linkroll ? await render(linkroll) : ({} as any);

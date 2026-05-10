@@ -17,6 +17,8 @@ onMount(() => {
 });
 </script>
 
-{#each config.i18n.locales as target}
-	<a data-no-swup href={getRelativeLocaleUrl(target, path)} lang={target} aria-current={locale === target ? "page" : undefined} class={locale === target ? "font-bold sm:bg-primary sm:text-background pointer-events-none" : ""}>{i18nit(target)("language")}</a>
-{/each}
+{#if config.i18n.locales.length > 1}
+	{#each config.i18n.locales as target}
+		<a data-no-swup href={getRelativeLocaleUrl(target, path)} lang={target} aria-current={locale === target ? "page" : undefined} class={locale === target ? "font-bold sm:bg-primary sm:text-background pointer-events-none" : ""}>{i18nit(target)("language")}</a>
+	{/each}
+{/if}

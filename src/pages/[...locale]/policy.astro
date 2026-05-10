@@ -7,7 +7,7 @@ import { getEntry } from "astro:content";
 
 export async function getStaticPaths() {
 	// Create path for each locale, omitting default locale from URL
-	return config.i18n.locales.map(locale => ({ params: { locale: config.i18n.defaultLocale === locale ? undefined : locale } }));
+	return config.i18n.locales.map(locale => ({ params: { locale: locale } }));
 }
 
 const { locale = config.i18n.defaultLocale } = Astro.params;

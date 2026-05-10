@@ -36,13 +36,12 @@ import siteConfig from "./site.config";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://thought-lite.vercel.app",
+	site: "https://blog.james7.cn",
 	trailingSlash: "never",
 	i18n: {
 		...siteConfig.i18n,
 		routing: {
-			redirectToDefaultLocale: false,
-			prefixDefaultLocale: false
+			prefixDefaultLocale: true
 		}
 	},
 	markdown: {

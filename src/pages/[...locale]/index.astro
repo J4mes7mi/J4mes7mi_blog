@@ -9,8 +9,8 @@ import Logo from "$icons/site-logo.svg";
 import i18nit from "$i18n";
 
 export async function getStaticPaths() {
-	// Create path for each locale, omitting default locale from URL
-	return config.i18n.locales.map(locale => ({ params: { locale: config.i18n.defaultLocale === locale ? undefined : locale } }));
+	// 单语言模式也生成 /zh-cn/ 前缀
+	return config.i18n.locales.map(locale => ({ params: { locale } }));
 }
 
 const { locale = config.i18n.defaultLocale } = Astro.params;

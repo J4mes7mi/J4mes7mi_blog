@@ -1,0 +1,23 @@
+---
+// 重定向到默认语言
+export function getStaticPaths() {
+	return [
+		{
+			params: {},
+			props: {}
+		}
+	];
+}
+
+const defaultLocale = "zh-cn";
+---
+
+<html>
+  <head>
+    <meta http-equiv="refresh" content={`0;url=/${defaultLocale}`} />
+    <link rel="canonical" href={`/${defaultLocale}`} />
+  </head>
+  <body>
+    <p>Redirecting to <a href={`/${defaultLocale}`}>${defaultLocale}</a>...</p>
+  </body>
+</html>
