@@ -8,6 +8,7 @@ import TOC from "$components/TOC.astro";
 import Position from "$components/Position.astro";
 import Icon from "$components/Icon.svelte";
 import Sensitive from "$components/Sensitive.svelte";
+import Waline from "$components/Waline.svelte";
 import i18nit from "$i18n";
 
 export async function getStaticPaths() {
@@ -113,6 +114,8 @@ const t = i18nit(locale);
 				</div>
 			</div>
 		</Sensitive>
+
+		<Waline client:visible />
 
 		<Position {locale} toc={note.data.toc} series={!!note.data.cover && !!note.data.series} />
 	</main>

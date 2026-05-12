@@ -6,6 +6,7 @@ import Base from "$layouts/Base.astro";
 import Position from "$components/Position.astro";
 import Icon from "$components/Icon.svelte";
 import Sensitive from "$components/Sensitive.svelte";
+import Waline from "$components/Waline.svelte";
 import i18nit from "$i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
@@ -62,6 +63,8 @@ const t = i18nit(locale);
 		<Sensitive {locale} back={getRelativeLocaleUrl(locale, "/jotting")} sensitive={jotting.data.sensitive} client:load>
 			<section id="markdown-content" class="markdown"><Content /></section>
 		</Sensitive>
+
+		<Waline client:visible />
 
 		<Position {locale} />
 	</main>

@@ -38,6 +38,7 @@ navigation:
   preface: Preface
   subscription: Subscription
 note:
+  comment: Go to Comments
   empty: No notes available
   series: Series
   tag: Tag
