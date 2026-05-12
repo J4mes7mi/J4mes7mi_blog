@@ -6,8 +6,9 @@ let container: HTMLDivElement;
 let instance: any;
 
 onMount(async () => {
-	const { init } = await import("@waline/client");
-	import("@waline/client/style");
+	const { init } = await import("@waline/client/full");
+	import("@waline/client/waline.css");
+	import("@waline/client/waline-meta.css");
 
 	instance = init({
 		el: container,
