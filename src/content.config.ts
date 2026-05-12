@@ -12,6 +12,7 @@ const note = defineCollection({
 		title: z.string(), // Post title (required)
 		timestamp: z.date(), // Publication date (required)
 		series: z.string().optional(), // Series name for grouped posts
+		cover: z.string().optional(), // Cover image URL for series hero section
 		tags: z.array(z.string()).optional(), // Array of topic tags
 		description: z.string().optional(), // Post description/excerpt
 		sensitive: z.boolean().default(false), // Marks content as sensitive
