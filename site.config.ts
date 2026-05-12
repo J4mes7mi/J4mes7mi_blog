@@ -2,13 +2,13 @@ import siteConfig from "./src/lib/config";
 
 const config = siteConfig({
 	title: "J4mes7mi",
-	prologue: "If you need a website\nthat loads fast and has great SEO, then Astro is for you.",
+	prologue: "If you need food\nMacdonald is great.",
 	author: {
 		name: "James",
 		email: "hi@j4mes7mi.github.io",
 		link: "https://j4mes7mi.github.io"
 	},
-	description: "A modern Astro theme focused on content creation.",
+	description: "All for life.",
 	copyright: {
 		type: "CC BY-NC-ND 4.0",
 		year: "2025"
