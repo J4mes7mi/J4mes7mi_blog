@@ -16,6 +16,7 @@ onMount(async () => {
 		pageSize: 10,
 		reaction: false,
 		comment: false,
+		authorBadge: true,
 		requiredMeta: ["nick"],
 		locale: {
 			placeholder: "欢迎留下你的想法……",
@@ -24,7 +25,8 @@ onMount(async () => {
 			nick: "昵称",
 			mail: "邮箱",
 			link: "链接",
-			sofa: "暂无评论，来坐沙发吧"
+			sofa: "暂无评论，来坐沙发吧",
+			admin: "博主"
 		}
 	});
 });
