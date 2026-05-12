@@ -2,6 +2,7 @@
 title: 迟来的第一篇博客
 timestamp: 2026-05-07 22:53:00+08:00
 tags: [Invest, Life, Intro]
+toc: true
 top: 1
 ---
 
