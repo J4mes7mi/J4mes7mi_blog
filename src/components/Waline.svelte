@@ -14,7 +14,7 @@ onMount(async () => {
 		serverURL: "/comment/",
 		lang: "zh-CN",
 		pageSize: 10,
-		reaction: true,
+		reaction: false,
 		requiredMeta: ["nick"],
 		locale: {
 			placeholder: "欢迎留下你的想法……",
