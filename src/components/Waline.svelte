@@ -16,6 +16,7 @@ onMount(async () => {
 		pageSize: 10,
 		reaction: false,
 		comment: false,
+		login: "enable",
 		authorBadge: true,
 		requiredMeta: ["nick"],
 		locale: {
