@@ -15,6 +15,7 @@ onMount(async () => {
 		lang: "zh-CN",
 		pageSize: 10,
 		reaction: false,
+		comment: false,
 		requiredMeta: ["nick"],
 		locale: {
 			placeholder: "欢迎留下你的想法……",
