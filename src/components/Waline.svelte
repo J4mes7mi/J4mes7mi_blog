@@ -12,7 +12,7 @@ onMount(async () => {
 
 	instance = init({
 		el: container,
-		serverURL: "/comment/",
+		serverURL: "https://blog.james7.cn",
 		lang: "zh-CN",
 		pageSize: 10,
 		reaction: false,

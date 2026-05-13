@@ -54,7 +54,7 @@ export const GET: APIRoute = async ({ site, params }) => {
 
 		// Attach locale and link for each note
 		notes.forEach(note => {
-			const id = monolocale ? note.id : note.id.split("/").slice(1).join("/");
+			const id = note.id.split("/").slice(1).join("/");
 			Reflect.set(note, "link", new URL(getRelativeLocaleUrl(language, `/note/${id}`), site).toString());
 		});
 
@@ -73,7 +73,7 @@ export const GET: APIRoute = async ({ site, params }) => {
 
 		// Attach locale and link for each jotting
 		jottings.forEach(jotting => {
-			const id = monolocale ? jotting.id : jotting.id.split("/").slice(1).join("/");
+			const id = jotting.id.split("/").slice(1).join("/");
 			Reflect.set(jotting, "link", new URL(getRelativeLocaleUrl(language, `/jotting/${id}`), site).toString());
 		});
 
