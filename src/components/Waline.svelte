@@ -64,4 +64,43 @@ onDestroy(() => {
 	:global(.wl-os) {
 		display: none !important;
 	}
+
+	/* 博主标识：🏠 图标 + 悬停显示「博主」 */
+	:global(.wl-badge) {
+		font-size: 0;
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		vertical-align: middle;
+		cursor: default;
+	}
+
+	:global(.wl-badge::before) {
+		content: "🏠";
+		font-size: 14px;
+		line-height: 1;
+	}
+
+	:global(.wl-badge::after) {
+		content: "博主";
+		position: absolute;
+		bottom: calc(100% + 6px);
+		left: 50%;
+		transform: translateX(-50%);
+		background: rgba(0, 0, 0, 0.75);
+		color: #fff;
+		font-size: 12px;
+		font-weight: normal;
+		padding: 2px 8px;
+		border-radius: 4px;
+		white-space: nowrap;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		pointer-events: none;
+		z-index: 10;
+	}
+
+	:global(.wl-badge:hover::after) {
+		opacity: 1;
+	}
 </style>
