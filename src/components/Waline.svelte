@@ -57,4 +57,11 @@ onDestroy(() => {
 		--waline-disable-bg-color: var(--weak-color);
 		--waline-disable-color: var(--secondary-color);
 	}
+
+	/* 隐藏评论元信息中的 IP 来源、浏览器和操作系统 */
+	:global(.wl-addr),
+	:global(.wl-browser),
+	:global(.wl-os) {
+		display: none !important;
+	}
 </style>
