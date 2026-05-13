@@ -13,6 +13,7 @@ onMount(async () => {
 	instance = init({
 		el: container,
 		serverURL: "https://blog.james7.cn",
+		emoji: ["//unpkg.com/@waline/emojis@1.1.0/tw-emoji"],
 		lang: "zh-CN",
 		pageSize: 10,
 		reaction: false,
