@@ -13,6 +13,7 @@ onMount(async () => {
 	instance = init({
 		el: container,
 		serverURL: "https://blog.james7.cn",
+		pageview: true,
 		emoji: ["//unpkg.com/@waline/emojis@1.1.0/tw-emoji"],
 		lang: "zh-CN",
 		pageSize: 10,
@@ -56,6 +57,11 @@ onDestroy(() => {
 		--waline-border-color: var(--weak-color);
 		--waline-disable-bg-color: var(--weak-color);
 		--waline-disable-color: var(--secondary-color);
+	}
+
+	/* 隐藏阅读量显示（先攒数据，以后开放） */
+	:global(.wl-count) {
+		display: none !important;
 	}
 
 	/* 隐藏评论元信息中的 IP 来源、浏览器和操作系统 */
