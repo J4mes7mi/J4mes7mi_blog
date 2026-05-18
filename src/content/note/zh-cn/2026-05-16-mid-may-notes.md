@@ -3,8 +3,9 @@ title: 2026年5月半月记
 timestamp: 2026-05-16 21:00:00+08:00
 tags: [Invest, Life, AI, Travel]
 series: 记事
-cover: /images/2026-05-16/reze.jpg
 ---
+
+![](/images/2026-05-16/reze.jpg)
 
 ## 5月的平常
 

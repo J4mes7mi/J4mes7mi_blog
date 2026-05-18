@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import config, { monolocale } from "$config";
 import Time from "$lib/time";
 import Base from "$layouts/Base.astro";
+import TOC from "$components/TOC.astro";
 import Position from "$components/Position.astro";
 import Icon from "$components/Icon.svelte";
 import Sensitive from "$components/Sensitive.svelte";
@@ -36,7 +37,7 @@ export async function getStaticPaths() {
 
 const { locale = config.i18n.defaultLocale } = Astro.params;
 const { jotting } = Astro.props;
-const { Content, remarkPluginFrontmatter: frontmatter } = await render(jotting);
+const { Content, headings, remarkPluginFrontmatter: frontmatter } = await render(jotting);
 
 const t = i18nit(locale);
 ---
@@ -61,11 +62,16 @@ const t = i18nit(locale);
 		</header>
 
 		<Sensitive {locale} back={getRelativeLocaleUrl(locale, "/jotting")} sensitive={jotting.data.sensitive} client:load>
-			<section id="markdown-content" class="markdown"><Content /></section>
+			<div class="contents">
+				<div class="flex gap-5">
+					<section id="markdown-content" class="markdown"><Content /></section>
+					{jotting.data.toc && <TOC headings={headings} {locale} />}
+				</div>
+			</div>
 		</Sensitive>
 
 		<Waline client:visible />
 
-		<Position {locale} />
+		<Position {locale} toc={jotting.data.toc} />
 	</main>
 </Base>
