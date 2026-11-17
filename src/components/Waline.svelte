@@ -59,11 +59,6 @@ onDestroy(() => {
 		--waline-disable-color: var(--secondary-color);
 	}
 
-	/* 隐藏阅读量显示（先攒数据，以后开放） */
-	:global(.wl-count) {
-		display: none !important;
-	}
-
 	/* 隐藏评论元信息中的 IP 来源、浏览器和操作系统 */
 	:global(.wl-addr),
 	:global(.wl-browser),
