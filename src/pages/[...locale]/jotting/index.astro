@@ -2,13 +2,14 @@
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import config, { monolocale } from "$config";
+import { contentSlug } from "$lib/content-path";
 import Base from "$layouts/Base.astro";
 import Jotting from "$components/Jotting.svelte";
 import i18nit from "$i18n";
 
 export async function getStaticPaths() {
-	// Create path for each locale, omitting default locale from URL
-	return config.i18n.locales.map(locale => ({ params: { locale: config.i18n.defaultLocale === locale ? undefined : locale } }));
+	// Always keep the locale prefix in the public URL, e.g. /zh-cn/jotting/
+	return config.i18n.locales.map(locale => ({ params: { locale } }));
 }
 
 const { locale = config.i18n.defaultLocale } = Astro.params;
@@ -26,7 +27,7 @@ const jottings = await getCollection("jotting", jotting => {
 // Standardize note structure
 let list = jottings.map(jotting => ({
 	id: jotting.id,
-	url: getRelativeLocaleUrl(locale, `/jotting/${monolocale ? jotting.id : jotting.id.split("/").slice(1).join("/")}`),
+	url: getRelativeLocaleUrl(locale, `/jotting/${contentSlug(jotting.id)}`),
 	data: {
 		title: jotting.data.title,
 		timestamp: jotting.data.timestamp,

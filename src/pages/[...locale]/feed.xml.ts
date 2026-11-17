@@ -2,13 +2,14 @@ import type { APIRoute } from "astro";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { getCollection, render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { localeFileUrl } from "$lib/content-path";
 import { Feed } from "feed";
 import config, { monolocale } from "$config";
 import i18nit from "$i18n";
 
 export async function getStaticPaths() {
-	// Create path for each locale, omitting default locale from URL
-	return config.i18n.locales.map(locale => ({ params: { locale: config.i18n.defaultLocale === locale ? undefined : locale } }));
+	// Always keep the locale prefix in the public URL, e.g. /zh-cn/feed.xml
+	return config.i18n.locales.map(locale => ({ params: { locale } }));
 }
 
 /**
@@ -33,7 +34,7 @@ export const GET: APIRoute = async ({ site, params }) => {
 		favicon: new URL("favicon.ico", site).toString(), // Feed favicon
 		id: site!.toString(), // Unique feed identifier
 		link: site!.toString(), // Feed's associated website
-		stylesheet: "/feed.xsl" // XSL stylesheet for feed (absolute path)
+		stylesheet: localeFileUrl(language, "/feed.xsl") // XSL stylesheet for feed
 	});
 
 	// Aggregate items from specified sections

@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import config, { monolocale } from "$config";
+import { contentSlug } from "$lib/content-path";
 import Time from "$lib/time";
 import Base from "$layouts/Base.astro";
 import TOC from "$components/TOC.astro";
@@ -16,22 +17,9 @@ export async function getStaticPaths() {
 	const notes = await getCollection("note", note => !note.data.draft);
 
 	return notes.map(note => {
-		let locale: string | undefined;
-		let id: string;
-
-		if (monolocale) {
-			locale = undefined;
-			id = note.id;
-		} else {
-			// Extract language and note ID from file path structure
-			const [language, ...ids] = note.id.split("/");
-
-			locale = config.i18n.defaultLocale === language ? undefined : language;
-			id = ids.join("/");
-		}
-
-		// Generate path params with optional locale (omit for default locale)
-		return { params: { locale, id }, props: { note } };
+		// Always keep the locale prefix in the public URL, e.g. /zh-cn/note/slug/
+		const [language, ...ids] = note.id.split("/");
+		return { params: { locale: language, id: ids.join("/") }, props: { note } };
 	});
 }
 
@@ -51,7 +39,7 @@ const series = note.data.series
 			.sort((a, b) => a.data.timestamp.getTime() - b.data.timestamp.getTime())
 			.map(item => ({
 				title: item.data.title,
-				url: getRelativeLocaleUrl(locale, `/note/${monolocale ? item.id : item.id.split("/").slice(1).join("/")}`),
+				url: getRelativeLocaleUrl(locale, `/note/${contentSlug(item.id)}`),
 				current: item.id === note.id
 			}))
 	: undefined;
@@ -95,7 +83,7 @@ const t = i18nit(locale);
 			</div>
 		</Sensitive>
 
-		<Waline client:visible />
+		<Waline client:load />
 
 		<Position {locale} toc={note.data.toc} series={!!series} />
 	</main>

@@ -1,11 +1,12 @@
 import type { APIRoute } from "astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { localeFileUrl } from "$lib/content-path";
 import config from "$config";
 import i18nit from "$i18n";
 
 export async function getStaticPaths() {
-	// Create path for each locale, omitting default locale from URL
-	return config.i18n.locales.map(locale => ({ params: { locale: config.i18n.defaultLocale === locale ? undefined : locale } }));
+	// Always keep the locale prefix in the public URL, e.g. /zh-cn/feed.xsl
+	return config.i18n.locales.map(locale => ({ params: { locale } }));
 }
 
 export const GET: APIRoute = ({ params }) => {
@@ -43,7 +44,7 @@ export const GET: APIRoute = ({ params }) => {
         <p>${t("feed.usage")}</p>
         <p>
           ${t("feed.address")}:
-          <code id="feed-url"><xsl:value-of select="concat(atom:feed/atom:link[@rel='alternate']/@href, '${getRelativeLocaleUrl(locale, "feed.xml").slice(1)}')" /></code>
+          <code id="feed-url"><xsl:value-of select="concat(atom:feed/atom:link[@rel='alternate']/@href, '${localeFileUrl(locale, "/feed.xml").replace(/^\//, "")}')" /></code>
           <button type="button" onclick="copy()" class="copy-btn">${t("feed.copy.name")}</button>
         </p>
       </blockquote>

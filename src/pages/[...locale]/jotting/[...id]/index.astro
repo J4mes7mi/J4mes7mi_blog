@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import config, { monolocale } from "$config";
+import config from "$config";
 import Time from "$lib/time";
 import Base from "$layouts/Base.astro";
 import TOC from "$components/TOC.astro";
@@ -16,22 +16,9 @@ export async function getStaticPaths() {
 	const jottings = await getCollection("jotting", jotting => !jotting.data.draft);
 
 	return jottings.map(jotting => {
-		let locale: string | undefined;
-		let id: string;
-
-		if (monolocale) {
-			locale = undefined;
-			id = jotting.id;
-		} else {
-			// Extract language and jotting ID from file path structure
-			const [language, ...ids] = jotting.id.split("/");
-
-			locale = config.i18n.defaultLocale === language ? undefined : language;
-			id = ids.join("/");
-		}
-
-		// Generate path params with optional locale (omit for default locale)
-		return { params: { locale, id }, props: { jotting } };
+		// Always keep the locale prefix in the public URL, e.g. /zh-cn/jotting/slug/
+		const [language, ...ids] = jotting.id.split("/");
+		return { params: { locale: language, id: ids.join("/") }, props: { jotting } };
 	});
 }
 
@@ -70,7 +57,7 @@ const t = i18nit(locale);
 			</div>
 		</Sensitive>
 
-		<Waline client:visible />
+		<Waline client:load />
 
 		<Position {locale} toc={jotting.data.toc} />
 	</main>

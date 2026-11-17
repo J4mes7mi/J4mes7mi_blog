@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { localeFileUrl } from "$lib/content-path";
 import Icon from "$components/Icon.svelte";
 import { monolocale } from "$config";
 import i18nit from "$i18n";
@@ -62,7 +63,7 @@ const route = Astro.url.pathname;
 		<footer class="flex flex-col items-start gap-2 sm:flex-row sm:gap-7">
 			<ThemeSwitcher />
 
-			<a href={getRelativeLocaleUrl(locale, "/feed.xml")} target="_blank" rel="noopener noreferrer" aria-label="Subscription" class="inline-flex"><Icon name="lucide--rss" /></a>
+			<a href={localeFileUrl(locale, "/feed.xml")} target="_blank" rel="noopener noreferrer" aria-label="Subscription" class="inline-flex"><Icon name="lucide--rss" /></a>
 
 			{
 				!monolocale && (

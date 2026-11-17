@@ -37,7 +37,7 @@ import siteConfig from "./site.config";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://blog.james7.cn",
-	trailingSlash: "never",
+	trailingSlash: "always",
 	i18n: {
 		...siteConfig.i18n,
 		routing: {
